@@ -4,13 +4,42 @@
 <head>
     <meta charset="utf-8">
     <title>GifTastic</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style type="text/css">
-        button,
-        div,
-        form,
-        input {
-            margin: 10px;
-        }
+
+    body {
+        background-image: url("sea-2755901_1920.jpg");
+    }
+
+    h1 {
+        margin-top: 15px;
+        margin-bottom: 20px;
+        color: white;
+    }
+    button {
+        background-color: slategray;
+        margin: 10px 10px;
+        border-radius: 4px;
+        border: none;
+        color: white;
+    }
+    .animal-div {
+        display: inline-block;
+        margin-right: 20px;
+    }
+
+    #animal-form {
+        float: right;
+        margin-top: 20px;
+    }
+    #add-animal{
+        background-color: slategray;
+        color: white;
+    }
+    input {
+        margin: 10px;
+    }
+    
     </style>
 </head>
 
@@ -73,6 +102,7 @@
                         let results = response.data;
                         for (let i = 0; i < results.length; i++) {
                             let gifDiv = $("<div>");
+                            gifDiv.addClass("animal-div");
                             let rating = results[i].rating;
                             let p = $("<p>").text("Rating: " + rating);
 
@@ -83,15 +113,12 @@
                             animalImage.addClass("gif");
                             animalImage.attr("src", results[i].images.fixed_height.url);
                             animalImage.on("click", function (){
-                                console.log(flag);
                                 if (flag == 0) {
                                     flag = 1;
                                     animalImage.attr("src", results[i].images.fixed_height_still.url);
-                                    console.log("one", flag);
                                 } else if (flag == 1) {
                                     flag = 0;
                                     animalImage.attr("src", results[i].images.fixed_height.url);
-                                    console.log("zero", flag);
                                 }
                             }); 
                             
