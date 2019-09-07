@@ -31,6 +31,7 @@
     #animal-form {
         float: right;
         margin-top: 20px;
+        color: white;
     }
     #add-animal{
         background-color: slategray;
@@ -64,7 +65,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript">
 
-            var animals = ["Dog", "Cat", "Horse", "Elephant", "Bird", "Giraffe", "Hippopotamus", "Mouse", "Bald Eagle", "Kingfisher", "Wale", "Goat"];
+            var animals = ["Dog", "Cat", "Horse", "Elephant", "Bird", "Giraffe", "Hippopotamus", "Mouse", "Bald Eagle", "Kingfisher", "Whale", "Goat"];
 
             function renderButtons() {
                 $("#buttons-view").empty();
@@ -88,6 +89,7 @@
                 var animal = $("#animal-input").val().trim();
                 animals.push(animal);
                 renderButtons();
+                $("#animal-input").val("");
             }
 
             function onButtonClick() {
@@ -111,14 +113,14 @@
                             let flag = 0;
                             // configure image
                             animalImage.addClass("gif");
-                            animalImage.attr("src", results[i].images.fixed_height.url);
+                            animalImage.attr("src", results[i].images.fixed_height_still.url);
                             animalImage.on("click", function (){
                                 if (flag == 0) {
                                     flag = 1;
-                                    animalImage.attr("src", results[i].images.fixed_height_still.url);
+                                    animalImage.attr("src", results[i].images.fixed_height.url);
                                 } else if (flag == 1) {
                                     flag = 0;
-                                    animalImage.attr("src", results[i].images.fixed_height.url);
+                                    animalImage.attr("src", results[i].images.fixed_height_still.url);
                                 }
                             }); 
                             
